@@ -1,4 +1,4 @@
-// import useToast from "@chakra-ui/toast";
+import { useToast } from "@chakra-ui/react";
 import React, { useContext, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UsersContext } from '../../App';
@@ -6,15 +6,16 @@ import sea from '../../assets/sea.jpg';
 import { emailRegex, mobileNoRegex, nameRegex, passRegex } from '../../components/RegEx';
 import './Register.css';
 
+
 const Register = () => {
-    // const toast = useToast();
+    const toast = useToast();
     const [users, setUsers] = useContext(UsersContext)
     const [regInfo, setRegInfo] = useState({})
     console.log("RegInfo: ", regInfo);
     const [inputError, setInputError] = useState({})
     const history = useHistory();
     const location = useLocation();
-    const { from } = location.state || { from: { pathname: "/users" } };
+    const { from } = location.state || { from: { pathname: "/login" } };
     
     const handleInputValidation = e =>{
         const inputName = e.target.name;
@@ -72,32 +73,29 @@ const Register = () => {
     } 
 
     const handleRegister = () =>{
-        // console.log("clikc")
         if (regInfo.email && regInfo.name && regInfo.mobile && regInfo.password){
             const newUsers = [...users]
             newUsers.push(regInfo)
             setUsers(newUsers)
             localStorage.setItem('users', JSON.stringify(newUsers))
             
-            alert('You have been registered successfully!')
-            // toast({
-            //     title: `You have been registered successfully! `,
-            //     status: "success",
-            //     position: "top",
-            //     isClosable: true,
-            // })
+            toast({
+                title: `You have been registered successfully! `,
+                status: "success",
+                position: "bottom",
+                isClosable: true,
+            })
 
             history.push(from);
 
         }
         else{
-            alert('Please fill out all the fields!')
-            // toast({
-            //     title: `Please fill out all the required fields! `,
-            //     status: "error",
-            //     position: "top",
-            //     isClosable: true,
-            // })
+            toast({
+                title: `Please fill out all the required fields! `,
+                status: "error",
+                position: "top",
+                isClosable: true,
+            })
         }
     }
 

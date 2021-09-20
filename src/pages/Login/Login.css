@@ -6,10 +6,11 @@
 
 .welcome{
   text-align:center;
-
+  font-size: 35px;
 }
 
 .text{
+margin-top: 10px;
 font-size:16px;
 text-align:center;
 margin-bottom: 40px;
@@ -21,7 +22,7 @@ margin-bottom: 40px;
 }
 
 .app-form{
-    width: 50%;
+    width: 60%;
     margin-left: 10vw;
     text-align:center;
 }
@@ -47,4 +48,10 @@ width: 290px;
 margin-top:30px;
 border-radius: 16px;
 
+}
+
+footer{
+  font-size: 14px;
+  margin-top: 195px;
+  cursor: pointer;
 }

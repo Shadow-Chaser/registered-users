@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { UsersContext } from '../../App';
 import sea from '../../assets/sea.jpg';
-
+import './UserList.css';
+let i=1;
 
 const UserList = () =>{
     const [users, setUsers] = useContext(UsersContext)
@@ -13,17 +14,32 @@ const UserList = () =>{
             </div>
 
             <div className='col-md-5'>
-                <h1 className='welcome'>User List</h1>
-                <ul>
+                <h1 className='user_table_caption'>User List</h1>
+                <table class="table table-bordered user_table">
+                <thead>
+                    <tr class='table-light'>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile No.</th>
+                    </tr>
+                </thead>
+                <tbody>
+
                     {
-                        users?.map(u=> <li>
-                            <h5 style={{fontSize:'14px'}}> Email: {u.email} </h5>
-                            <h5 style={{fontSize:'14px'}}> Name: {u.name} </h5>
-                            <h5 style={{fontSize:'14px'}}> Mobile: {u.mobile} </h5>
-                            
-                        </li>)
+                        users?.map(u =>
+                            <tr>
+                                <td>{i++}</td>
+                                <td>{u.name}</td>
+                                <td>{u.email}</td>
+                                <td>{u.mobile}</td>
+                            </tr>
+                        )
                     }
-                </ul>
+
+                </tbody>
+            </table>
+
 
             </div>
         </div>

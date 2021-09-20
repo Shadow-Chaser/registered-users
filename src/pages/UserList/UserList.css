@@ -1,0 +1,10 @@
+.user_table_caption{
+text-align:center;
+font-size: 35px;
+margin: 15px 0;
+}
+
+.user_table{
+    width:85%;
+    margin:0 auto;
+}
